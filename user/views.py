@@ -8,11 +8,12 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
-
+from django.contrib.auth.decorators import login_required
 
 #################### index#######################################
+@login_required
 def index(request):
-	return render(request, 'user/index.html', {'title':'index'})
+	return render(request, 'user/index.html', {'form':form, 'title':'index'})
 
 ########### register here #####################################
 def register(request):
