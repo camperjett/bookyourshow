@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'relational_table',
     'pages',
-    'accounts',
+    'user.apps.UserConfig',
+    'crispy_forms',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -93,20 +94,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+AUTH_PASSWORD_VALIDATORS = []
 
 
 # Internationalization
@@ -128,6 +116,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = 'login/'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'siddharthverma'
+EMAIL_HOST_PASSWORD = 'vsiddharth365@gmail.com'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
