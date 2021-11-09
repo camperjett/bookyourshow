@@ -49,7 +49,7 @@ def Login(request):
 		user = authenticate(request, username = username, password = password)
 		if user is not None:
 			form = login(request, user)
-			messages.success(request, f' welcome {username} !!')
+			# messages.success(request, f' welcome {username} !!')
 			return redirect('index')
 		else:
 			messages.info(request, f'account done not exist plz sign in')

@@ -16,6 +16,7 @@ body {
 
 .logo {
   height: 10px;
+  width: auto;
 }
 
 .intro {
