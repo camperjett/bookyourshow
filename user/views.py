@@ -76,6 +76,11 @@ def edit_profile(request):
 class change_password(PasswordChangeView):
 	form_class = PasswordChangeForm
 	success_url = reverse_lazy('index')
+	
+	def form_valid(self, form):
+		form.save()
+		messages.success(self.request, "Your password has been changed.")
+		return super(PasswordChangeView, self).form_valid(form)
 
 @login_required
 def dashboard(request):
