@@ -5,12 +5,10 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm, PasswordChangeForm
 from django.urls import reverse_lazy
-from .forms import UserRegisterForm
-from django.core.mail import send_mail
-from django.core.mail import EmailMultiAlternatives
+from .forms import UserRegisterForm, EditProfileForm, Dashboard
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
-from .forms import EditProfileForm, Dashboard
 
 @login_required
 def index(request):
