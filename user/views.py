@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserChangeForm, PasswordChangeForm
+from django.urls import reverse_lazy
 from .forms import UserRegisterForm
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
-from .forms import EditProfileForm
+from .forms import EditProfileForm, Dashboard
 
 @login_required
 def index(request):
@@ -49,7 +51,7 @@ def Login(request):
 		user = authenticate(request, username = username, password = password)
 		if user is not None:
 			form = login(request, user)
-			# messages.success(request, f' welcome {username} !!')
+			messages.success(request, f' welcome {username} !!')
 			return redirect('index')
 		else:
 			messages.info(request, f'account done not exist plz sign in')
@@ -58,7 +60,8 @@ def Login(request):
 
 @login_required
 def edit_profile(request):
-	form = EditProfileForm(request.POST or None, instance=request.user)
+	user = request.user
+	form = EditProfileForm(request.POST or None, instance=user)
 	if request.method == 'POST':
 		if form.is_valid():
 			username = request.POST['username']
@@ -69,3 +72,16 @@ def edit_profile(request):
 			form.save()
 			return redirect('index')
 	return render(request, 'user/editprofile.html', {'form':form, 'title':'Edit profile'})
+
+class change_password(PasswordChangeView):
+	form_class = PasswordChangeForm
+	success_url = reverse_lazy('index')
+	
+	def form_valid(self, form):
+		form.save()
+		messages.success(self.request, "Your password has been changed.")
+		return super(PasswordChangeView, self).form_valid(form)
+
+@login_required
+def dashboard(request):
+	return render(request, 'user/dashboard.html', {'title': 'dashboard'})
