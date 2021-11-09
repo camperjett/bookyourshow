@@ -25,3 +25,6 @@ class EditProfileForm(UserChangeForm):
 		fields = ['username', 'email','first_name', 'last_name']
 	def get_object(self):
 		return self.request.user
+	
+class Dashboard():
+	pass
