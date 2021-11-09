@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'movie',
     'show',
+    'booking'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
