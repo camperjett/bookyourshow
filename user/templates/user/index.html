@@ -97,9 +97,9 @@
     <br />
     <div class="row">
       {% block start %} {% if user.is_authenticated %}
-      <center><h1>welcome back {{user.username}}!</h1></center>
+      <center><h1>Welcome back {{user.username}}!</h1></center>
       {% else %}
-      <center><h1>log in, plz . . .</h1></center>
+      <center><h1>Log in, please...</h1></center>
       {% endif %} {% endblock %}
     </div>
   </body>
