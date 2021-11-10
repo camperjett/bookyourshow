@@ -9,19 +9,19 @@ class MovieCast(models.Model):
 
 
 class MovieDetail(models.Model):
-    title        = models.CharField(max_length=20)
+    title        = models.CharField(max_length=100)
     photo = models.ImageField(null=True, blank=True, upload_to='movie_poster')
-    genre       = models.CharField(max_length=20)
+    genre       = models.CharField(max_length=50)
     rating      = models.DecimalField(max_digits=2, decimal_places=1)
-    budget       = models.DecimalField(max_digits=10, decimal_places=2)
-    director     = models.CharField(max_length=20)
-    producer     = models.CharField(max_length=20)
+    budget       = models.DecimalField(max_digits=15, decimal_places=2)
+    director     = models.CharField(max_length=50)
+    producer     = models.CharField(max_length=50)
     cast = models.ManyToManyField(
         MovieCast,
         related_name='movies'
     )
     release_date = models.DateField()
-    language     = models.CharField(max_length=20)
+    language     = models.CharField(max_length=50)
 
     class Meta:
         ordering = ['title']

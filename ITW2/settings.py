@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'relational_table',
-    'pages',
     'user.apps.UserConfig',
     'crispy_forms',
     'movie',
