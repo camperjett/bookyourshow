@@ -22,7 +22,7 @@ class EditProfileForm(UserChangeForm):
 	address = forms.CharField(max_length=30, required=False)
 	class Meta:
 		model = User
-		fields = ['username', 'email','first_name', 'last_name']
+		fields = ['username', 'email','first_name', 'last_name', 'age', 'gender', 'address', 'phone_no']
 	def get_object(self):
 		return self.request.user
 	

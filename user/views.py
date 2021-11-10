@@ -67,6 +67,10 @@ def edit_profile(request):
 			phone_no = request.POST['phone_no']
 			first_name = request.POST['first_name']
 			last_name = request.POST['last_name']
+			photo = request.POST['photo']
+			gender = request.POST['gender']
+			address = request.POST['address']
+			age = request.POST['age']
 			form.save()
 			return redirect('index')
 	return render(request, 'user/editprofile.html', {'form':form, 'title':'Edit profile'})

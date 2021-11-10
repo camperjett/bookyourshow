@@ -10,7 +10,9 @@ class MovieCast(models.Model):
 
 class MovieDetail(models.Model):
     title        = models.CharField(max_length=100)
+    about = models.CharField(max_length=1000, default="Super duper hit movie :)")
     photo = models.ImageField(null=True, blank=True, upload_to='movie_poster')
+    cover = models.ImageField(null=True, blank=True, upload_to='movie_cover')
     genre       = models.CharField(max_length=50)
     rating      = models.DecimalField(max_digits=2, decimal_places=1)
     budget       = models.DecimalField(max_digits=15, decimal_places=2)
