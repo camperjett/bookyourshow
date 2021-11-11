@@ -9,6 +9,9 @@ from .forms import UserRegisterForm, EditProfileForm, Dashboard
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
+from movie.models import *
+from show.models import *
+from booking.models import *
 
 @login_required
 def index(request):
@@ -86,4 +89,6 @@ class change_password(PasswordChangeView):
 
 @login_required
 def dashboard(request):
-	return render(request, 'user/dashboard.html', {'title': 'dashboard'})
+	return render(request, 'user/dashboard.html', {'user':request.user,
+			'movie':MovieDetail, 'show':ShowDetail, 'theatre': Theatre,
+			'booking':BookedSeat,'seat':SeatMatrix, 'title': 'dashboard'})

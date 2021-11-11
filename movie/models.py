@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class MovieCast(models.Model):
     actor_name = models.CharField(max_length=100)
     photo = models.ImageField(null=True, blank=True, upload_to='cast')

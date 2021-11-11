@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class BookedSeat(models.Model):
     booking_time = models.DateTimeField()
-    currency = models.CharField(max_length=5)
+    currency = models.CharField(max_length=10)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     seat_type = models.SmallIntegerField()
     rate = models.SmallIntegerField()

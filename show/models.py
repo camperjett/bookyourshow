@@ -13,7 +13,8 @@ class ShowDetail(models.Model):
     duration = models.DurationField()
     start_time = models.DateTimeField()
     hall_no = models.ForeignKey(SeatMatrix, on_delete=models.CASCADE)
-    title = models.ManyToManyField(MovieDetail, related_name='movieshows')
+    title = models.OneToOneField(MovieDetail, on_delete=models.CASCADE,
+                                 related_name='movieshows')
 
     def __str__(self):
         return self.title
