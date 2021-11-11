@@ -241,3 +241,12 @@ a[data-tooltip][data-placement='top']::after {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.book-rating {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-btn {
+  transform: translate(150px, 5px);
+}
