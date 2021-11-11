@@ -1,10 +1,53 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
 </head>
 <body>
-
+<img src="{% static 'images/user-dp.png' %}"
+    width="100" height="100" class="rounded-circle"/>
+<div class="">
+    <p>Username : {{ user.username }}</p>
+</div>
+<div class="">
+    <p>Email address : {{ user.email }}</p>
+</div>
+<div class="">
+    <p>Name : {{ user.first_name }} {{ user.last_name }}</p>
+</div>
+{% for movie in movies %}
+{% if booking.title == show.title and show.title == movie.title and
+booking.user == user and show.hall_no = seat.hall_no and
+seat.is_booked == 1 %}
+<div class="">
+    <h2>Movie details</h2><br>
+    <p>Name : {{ movie.title }}</p><br>
+    <p>Genre : {{ movie.genre }}</p><br>
+    <p>Duration : {{ show.duration }}</p><br>
+    <p>Start time : {{ show.start_time }}</p><br>
+</div>
+<div class="">
+    <h2>Ticket bookings</h2><br>
+    <p>Due amount : {{ booking.currency }} {{ booking.amount }}</p><br>
+    <p>Booking time : {{booking.booking_time }}</p><br>
+    <p>Ticket rate : {{ booking.rate }}</p><br>
+</div>
+<div class="">
+    <h2>Booked seat details</h2><br>
+    <p>Hall no. : {{ seat.hall_no }}</p>
+    <p>Seat section : {{ seat.seat_section }}</p><br>
+    <p>Seat row : {{ seat.seat_row }}</p><br>
+    <p>Seat no. : {{ seat.seat_no }}</p><br>
+    <p>Seat type : {{ seat.seat_type }}</p><br>
+</div>
+<div class="">
+    <h2>Theatre details</h2><br>
+    <p>Name : {{ theatre.name }}</p><br>
+    <p>Address : {{ theatre.address }}</p><br>
+    <p>Phone no. : {{ theatre.phone }}</p><br>
+</div>
+{% endfor %}
 </body>
 </html>
