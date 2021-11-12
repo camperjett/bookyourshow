@@ -64,7 +64,7 @@
             aria-expanded="false"
           >
             <img
-              src="{% static 'images/user-dp.png' %}"
+              src="{{ user.photo.url }}"
               width="40"
               height="40"
               class="rounded-circle"
@@ -73,8 +73,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
             <a class="dropdown-item" href="{% url 'edit_profile' %}"
-              >Edit Profile</a
-            >
+              >Edit Profile</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
           </div>
         </div>
