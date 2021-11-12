@@ -1,5 +1,5 @@
 from django.db import models
-
+from user.models import Account
 
 class MovieCast(models.Model):
     actor_name = models.CharField(max_length=100)
@@ -65,4 +65,17 @@ class ShowDetail(models.Model):
 
     def __str__(self) :
         return "Date : {x} Time: {y} Screen: {z}".format(x=self.date,y=self.time,z=self.screen)
-        
+
+class Booking(models.Model):
+    
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    row_num = models.PositiveSmallIntegerField(null=False, blank=False)
+    col_num = models.PositiveSmallIntegerField(null=False, blank=False)
+    show = models.ForeignKey(ShowDetail,related_name="booking_show",null=False,on_delete=models.CASCADE)
+    user = models.ForeignKey(Account,related_name="booking_user",null=False,default=None, on_delete=models.DO_NOTHING)
+    status = models.IntegerField(default=1)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+
+    class Meta:
+        unique_together = ('show', 'row_num', 'col_num')

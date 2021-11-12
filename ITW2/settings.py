@@ -97,7 +97,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = []
-AUTH_PROFILE_MODULE = ['user.models.UserProfile']
+AUTH_USER_MODEL='user.Account'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
