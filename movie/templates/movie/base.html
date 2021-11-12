@@ -63,12 +63,21 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
+            {% if user.photo %}
             <img
               src="{{ user.photo.url }}"
               width="40"
               height="40"
               class="rounded-circle"
             />
+            {% else %}
+            <img
+              src="{% static 'images/default.png' %}"
+              width="60"
+              height="40"
+              class="rounded-circle"
+            />
+            {% endif %}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
