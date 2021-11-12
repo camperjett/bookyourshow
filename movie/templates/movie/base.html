@@ -39,7 +39,7 @@
           ><img
             class="logo"
             style="width: 150px; height: auto"
-            src="{% static 'images/bookmyshow.png' %}"
+            src="{% static 'images/bookyourshow.png' %}"
             alt=""
         /></a>
         <form class="d-flex bd-highlight me-auto">
@@ -52,7 +52,7 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <!-- user drop down START -->
-        <span class="p-2 bd-highlight">Hello {{ user}}</span>
+        <span class="p-2 bd-highlight">Hello {{ user.username }}</span>
         <div class="nav-item dropdown me-3">
           <a
             class="nav-link dropdown-toggle"
@@ -63,18 +63,26 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
+            {% if user.photo %}
             <img
-              src="{% static 'images/user-dp.png' %}"
+              src="{{ user.photo.url }}"
               width="40"
               height="40"
               class="rounded-circle"
             />
+            {% else %}
+            <img
+              src="{% static 'images/default.png' %}"
+              width="60"
+              height="40"
+              class="rounded-circle"
+            />
+            {% endif %}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
             <a class="dropdown-item" href="{% url 'edit_profile' %}"
-              >Edit Profile</a
-            >
+              >Edit Profile</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
           </div>
         </div>
