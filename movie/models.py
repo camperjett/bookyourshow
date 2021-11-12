@@ -56,7 +56,6 @@ class Screen(models.Model) :
 class ShowDetail(models.Model):
     date = models.DateField()
     time = models.TimeField()
-    duration = models.DurationField()
 
     price = models.IntegerField()
     screen = models.ForeignKey(Screen,related_name="show_screen", on_delete=models.CASCADE)
@@ -65,5 +64,5 @@ class ShowDetail(models.Model):
     movie = models.ForeignKey(MovieDetail,related_name="show_movie",on_delete=models.CASCADE)
 
     def __str__(self) :
-        return "Date : {}".format(self.date)
+        return "Date : {x} Time: {y} Screen: {z}".format(x=self.date,y=self.time,z=self.screen)
         

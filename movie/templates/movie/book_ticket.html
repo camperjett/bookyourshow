@@ -20,7 +20,8 @@
   </ul>
 </nav>
 <br />
-<div class="card">
+<!-- Sample Card -->
+<!-- <div class="card">
   <div class="card-body">
     <h5 class="card-title">Cinepolis: Seawoods Grand Central</h5>
     <p class="card-text">Navi Mumbai</p>
@@ -34,5 +35,18 @@
     <a href="#" class="btn btn-outline-success">09:00 PM</a>
   </div>
 </div>
+<hr /> -->
 
-{% endblock %}
+{%for show in shows%}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{show.theatre}}</h5>
+    <p class="card-text">{{show.theatre.city}}</p>
+    <a
+      href="{% url 'book_seat' pk=movie.pk show_id=show.pk %}"
+      class="btn btn-outline-success"
+      >{{show.time}}</a
+    >
+  </div>
+</div>
+{%endfor%} {% endblock %}
