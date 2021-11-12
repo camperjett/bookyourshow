@@ -107,6 +107,6 @@ class change_password(PasswordChangeView):
 		messages.success(self.request, "Your password has been changed.")
 		return super(PasswordChangeView, self).form_valid(form)
 
-
+@login_required
 def dashboard(request):
 	return render(request,'user/dashboard.html', {})
