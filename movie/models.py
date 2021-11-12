@@ -31,4 +31,39 @@ class MovieDetail(models.Model):
     def __str__(self):
         return self.title
 
+
+class Theatre(models.Model):
+    name = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
+    phone = models.BigIntegerField()
+    rating = models.DecimalField(max_digits=1, decimal_places=0)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+class Screen(models.Model) :
+    name = models.CharField(max_length=20)
+    no_of_rows = models.IntegerField()
+    no_of_columns = models.IntegerField()
+    theatre = models.ForeignKey(Theatre,related_name="screen",on_delete=models.CASCADE)
+
+    def __str__(self) :
+        return "{x} {y} {z}".format(x=self.name,y=self.theatre.name,z=self.theatre.city)
+    
+class ShowDetail(models.Model):
+    date = models.DateField()
+    time = models.TimeField()
+    duration = models.DurationField()
+
+    price = models.IntegerField()
+    screen = models.ForeignKey(Screen,related_name="show_screen", on_delete=models.CASCADE)
+    theatre = models.ForeignKey(Theatre,related_name="show_theatre",on_delete=models.CASCADE)
+
+    movie = models.ForeignKey(MovieDetail,related_name="show_movie",on_delete=models.CASCADE)
+
+    def __str__(self) :
+        return "Date : {}".format(self.date)
         

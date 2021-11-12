@@ -10,3 +10,6 @@ class UserProfile(models.Model):
     age = models.CharField(max_length=5, null=True)
     gender = models.CharField(max_length=10, null=True)
     address = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.email

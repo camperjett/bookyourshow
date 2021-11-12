@@ -10,8 +10,8 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 from movie.models import *
-from show.models import *
-from booking.models import *
+# from show.models import *
+# from booking.models import *
 
 @login_required
 def index(request):

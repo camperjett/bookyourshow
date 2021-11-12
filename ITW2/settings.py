@@ -44,12 +44,12 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'relational_table',
-    'user.apps.UserConfig',
+    # 'relational_table',
+    'user',
     'crispy_forms',
     'movie',
-    'show',
-    'booking'
+    # 'show',
+    # 'booking'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
