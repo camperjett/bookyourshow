@@ -3,7 +3,7 @@
 {% block start %}
 
 <div class="content-section col-md-8 col-md-offset-2">
-  <form method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;">
+  <form method="POST" enctype='multipart/form-data' style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;">
     {% csrf_token %}
     <fieldset class="form-group">
       {{ form|crispy}}
