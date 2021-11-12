@@ -1,5 +1,31 @@
+.container .main-body nav{
+	text-align: center;
+	background-color: #212422;
+}
+.container .main-body nav ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 10px 15px;
+}
+.container .main-body nav ul li a{
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+}
+.container .main-body nav ul li::after{
+	content:'';
+	width: 0%;
+	height: 1px;
+	display: block;
+	background: yellow;
+	margin: auto;
+	transition: 0.5s;
+}
+.container .main-body nav ul li:hover::after{
+	width: 100%;
+}
 body{
-    margin-top:20px;
+    margin-top:-20px;
     color: #1a202c;
     text-align: left;
     background-color: #e2e8f0;
