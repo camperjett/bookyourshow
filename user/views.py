@@ -65,7 +65,7 @@ def edit_profile(request):
 			return redirect("login")
 	context = {}
 	if request.POST:
-		form = AccountUpdateForm(request.POST or None, instance=request.user)
+		form = AccountUpdateForm(request.POST or None, request.FILES, instance=request.user)
 		if form.is_valid():
 			form.initial = {
 					"email": request.POST['email'],
@@ -76,7 +76,7 @@ def edit_profile(request):
 					"gender": request.POST['gender'],
 					"phone_no": request.POST['phone_no'],
 					"address": request.POST['address'],
-					"photo": request.POST['photo']
+					"photo": request.FILES['photo']
 			}
 			form.save()
 		return redirect('index')
