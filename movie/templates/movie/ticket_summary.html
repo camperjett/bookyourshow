@@ -212,13 +212,20 @@ crossorigin="anonymous"
         method: 'post',
         url: `{% url 'payment' %}`,
         data: {
-          text: "IM GOOD"
+          seats: seats,
+          showId: showId,
+          amount: showPrice
         },
         headers: { 'X-CSRFToken': '{{csrf_token}}' },
       })
-        .then(d => {console.log('worked cool: ', d)
+        .then(d => {
+          console.log('worked cool: ', d)
+          // window.location.href="{%url 'payment_success'%}"
         })
-        .catch(e => console.error(e));
+        .catch(e => {
+          console.error(e)
+          // window.location.href="{%url 'payment_'%}"
+        });
     }
   </script>
 </html>

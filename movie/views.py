@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import MovieDetail, ShowDetail
+from .models import MovieDetail, ShowDetail, Booking
+from user.models import Account
 import simplejson as json
 
 @login_required
@@ -44,5 +45,18 @@ def ticket_summary(request):
 def payment(request):
     body_unicode = request.body.decode('utf-8')
     body = json.loads(body_unicode)
-    print(body)
+    user = request.user
+    showId = body['showId']
+    PerTicketAmount = body['amount']
+    seats = body['seats']
+
+    Show=ShowDetail.objects.get(pk=showId)
+    User=Account.objects.get(username=user.username)
+
+    for seat in seats:
+        b=Booking(row_num=int(seat['GridRowId']), col_num=int(seat['GridSeatNum']), amount=PerTicketAmount)
+        b.show=Show
+        b.user=User
+        b.save()
+
     return HttpResponse({})
