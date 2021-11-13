@@ -60,3 +60,6 @@ def payment(request):
         b.save()
 
     return HttpResponse({})
+
+def contact_view(request):
+    return render(request, 'movie/contact.html',{})

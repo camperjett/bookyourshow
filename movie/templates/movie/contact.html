@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookYourShow | Contact us</title>
+</head>
+<style>
+    h1{
+    text-align : center;
+    }
+nav{
+	text-align: center;
+	background-color: #212422;
+}
+nav ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 10px 15px;
+
+}
+nav ul li a{
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+}
+nav ul li::after{
+	content:'';
+	width: 0%;
+	height: 2px;
+	display: block;
+	background: yellow;
+	margin: auto;
+	transition: 0.5s;
+}
+nav ul li:hover::after{
+	width: 100%;
+}
+</style>
+<nav>
+    <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</nav>
+<h1>Contact us</h1><hr>
+<body>
+<h2>Jaideep Sharma</h2>
+<p>
+    Email : jaideep.sharma.cse20@iitbhu.ac.in<br>
+    Phone no. : 9358743979
+</p>
+<hr>
+<h2>Siddharth Verma</h2>
+<p>
+    Email : siddharth.verma.cse20@iitbhu.ac.in<br>
+    Phone no : 9752318678
+</p>
+</body>
+</html>

@@ -11,6 +11,7 @@ urlpatterns = [
     # path('movie/seatbook/', seat_book, name="seat_book")
     path('movie/book/summary', ticket_summary, name='ticket_summary'),
     path('movie/book/summary/payment', payment, name='payment'),
+    path('contact/', contact_view, name='contact')
     # path('movie/book/summary/payment/success', , name='payment_success'),
     
 ]
