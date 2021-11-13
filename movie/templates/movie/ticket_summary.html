@@ -220,10 +220,12 @@ crossorigin="anonymous"
       })
         .then(d => {
           console.log('worked cool: ', d)
-          
+          alert("The payment was successful!");
+          window.location.href="{%url 'dashboard'%}";
         })
         .catch(e => {
           console.error(e)
+          alert("One of the seats you tried to book was already booked. Try again with different seats");
           
         });
     }
