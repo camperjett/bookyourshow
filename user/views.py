@@ -9,7 +9,8 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 from user.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
-
+from movie.models import Booking
+from .models import Account
 @login_required
 def index(request):
 	return render(request, 'user/index.html', {'form':form, 'title':'index'})
@@ -109,4 +110,7 @@ class change_password(PasswordChangeView):
 
 @login_required
 def dashboard(request):
-	return render(request,'user/dashboard.html', {})
+
+	User=Account.objects.get(username=request.user.username)
+	tickets = Booking.objects.filter(user=User.pk)
+	return render(request,'user/dashboard.html', {'tickets':tickets})
