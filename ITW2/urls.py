@@ -24,7 +24,7 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('',include('user.urls')),
     path('',include('movie.urls')),
-    
+    path('chat/', include('chat.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls)
 ]
