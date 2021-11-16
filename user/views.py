@@ -54,7 +54,7 @@ def login_view(request):
 		if user is not None:
 			form = login(request, user)
 			messages.success(request, f' welcome {username} !!')
-			return redirect('index')
+			return redirect('home')
 		else:
 			messages.info(request, f'Account does not exist! Please enter correct credentials.')
 	form = AccountAuthenticationForm()
@@ -80,7 +80,7 @@ def edit_profile(request):
 					"photo": request.FILES['photo']
 			}
 			form.save()
-		return redirect('index')
+		return redirect('home')
 	else:
 		form = AccountUpdateForm(
 			initial={
@@ -101,7 +101,7 @@ def edit_profile(request):
 
 class change_password(PasswordChangeView):
 	form_class = PasswordChangeForm
-	success_url = reverse_lazy('index')
+	success_url = reverse_lazy('home')
 
 	def form_valid(self, form):
 		form.save()
